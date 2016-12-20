@@ -20,9 +20,15 @@ public class FromRomanToArabic {
 		Integer actual, previous = -1;
 		for (int i = romanNumber.length() -1; i >=0 ; i--) {
 			nextChar = String.valueOf(romanNumber.charAt(i));
+			System.out.println(nextChar);
 			actual = getValor(nextChar);
+			System.out.println(actual);
 			verificaOrdenCorrecto(actual, previous);
-			res = assignaSigno(actual, previous);
+			if (previous != -1) {
+				res = previous + assignaSigno(actual, previous);
+			} else {
+				res = assignaSigno(actual, previous);
+			}
 			previous = actual;
 		}
 		return res;
